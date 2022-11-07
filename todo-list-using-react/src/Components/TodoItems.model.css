@@ -1,0 +1,31 @@
+.Todobox{
+    display: flex;
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    padding: 8px;
+    background-color:rgba(243, 248, 251, 0.893);
+    border-radius: 10px;
+}
+.TodoboxInside{
+    display: flex;
+    gap: 10px;
+}
+.rem{
+    height: 22px;
+    background-color: rgb(230, 170, 190);
+    border: 1px solid black;
+}
+.rem:hover{
+    background-color: rgb(203, 220, 178);
+}
+.buttonBlock{
+    background-color: rgb(118, 115, 116);
+}
+.striked{
+    text-decoration: line-through;
+}
