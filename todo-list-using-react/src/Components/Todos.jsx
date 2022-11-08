@@ -15,8 +15,9 @@ const Todos = () => {
   };
 
   const toggle = (ids) => {
+    let status_val = localStorage.getItem(ids) === "true" ? true : false;
     const updateTodo = todos.map((item) =>
-      item.id === ids ? { ...item, status: !item.status } : item
+      item.id === ids ? { ...item, status: status_val } : item
     );
     setTodos(updateTodo);
   };
@@ -24,13 +25,13 @@ const Todos = () => {
     <div className="">
       <h1>TODO LIST</h1>
       <input
+        className="ipBox"
         value={value}
         placeholder="Enter Todo Items/Work"
         onChange={(e) => {
           setValues(e.target.value);
         }}
         onKeyDownCapture={(e) => {
-          // console.log(e);
           if (e.key === "Enter" && value !== "") {
             setTodos([
               ...todos,
@@ -40,15 +41,6 @@ const Todos = () => {
           }
         }}
       />
-
-      {/* <button
-        onClick={() => {
-          setTodos([...todos, { id: Date.now(), title: value }]);
-          setValues("");
-        }}
-      >
-        ADD
-      </button> */}
       {todos
         .filter((item) => (showAll ? true : !item.status))
         .map((ele) => (
@@ -59,16 +51,16 @@ const Todos = () => {
             toggle={toggle}
           />
         ))}
-      {/* {console.log('todo ',todos)} */}
-
-      <button
-        onClick={() => {
-          setShowAll(!showAll);
-        }}
-        className="showButton"
-      >
-        {showAll ? "Show Only Uncompleted Tasks" : "Show All"}
-      </button>
+      <div>
+        <button
+          onClick={() => {
+            setShowAll(!showAll);
+          }}
+          className= {showAll ? "showButton comp":"showButton uncomp"}
+        >
+          {showAll ? "Show Only Uncompleted Tasks" : "Show All"}
+        </button>
+      </div>
     </div>
   );
 };
